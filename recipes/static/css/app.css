@@ -15,11 +15,11 @@ header nav ul {
 a,
 a:visited {
   text-decoration: none;
-  color: #208ACC;
+  color: orangered;
 }
 
 button.button {
-  background-color: #E012AD;
+  background-color: orange;
   border: 2px solid transparent;
   border-radius: 4px;
   color: white;
@@ -29,8 +29,8 @@ button.button {
 
 button.button:hover {
   background-color: white;
-  border-color: #E012AD;
-  color: #E012AD;
+  border-color: orange;
+  color: orange;
 }
 
 button.button:active {
@@ -38,7 +38,7 @@ button.button:active {
 }
 
 input, textarea {
-  border: 1px solid #E012AD;
+  border: 1px solid orange;
   border-radius: 4px;
   padding: 1em 1.5em;
 }
