@@ -90,6 +90,7 @@ DATABASES = {
 if os.environ.get("DATABASE_URL"):
     DATABASES["default"].update(dj_database_url.config())
 
+
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
@@ -135,22 +136,18 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 MARKDOWNIFY = {
     "default": {
         "WHITELIST_TAGS": [
-            'a',
-            'abbr',
-            'acronym',
-            'b',
-            'blockquote',
-            'em',
-            'i',
-            'li',
-            'ol',
-            'p',
-            'strong',
-            'ul'
+            "a",
+            "abbr",
+            "acronym",
+            "b",
+            "blockquote",
+            "em",
+            "i",
+            "li",
+            "ol",
+            "p",
+            "strong",
+            "ul",
         ]
-    },
-
-    "other": {
-        ...
     }
 }
