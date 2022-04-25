@@ -30,6 +30,9 @@
   </header>
   <main class="recipe-detail">
     <div>
+      <a href="{% url 'recipe_delete' recipe.id %}">Delete</a>
+    </div>
+    <div>
       <a href="{% url 'recipe_edit' recipe.id %}">Edit</a>
     </div>
     {% if recipe.image %}
