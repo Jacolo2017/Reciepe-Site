@@ -15,11 +15,11 @@ header nav ul {
 a,
 a:visited {
   text-decoration: none;
-  color: orangered;
+  color: #208ACC;
 }
 
 button.button {
-  background-color: orange;
+  background-color: #E012AD;
   border: 2px solid transparent;
   border-radius: 4px;
   color: white;
@@ -29,8 +29,8 @@ button.button {
 
 button.button:hover {
   background-color: white;
-  border-color: orange;
-  color: orange;
+  border-color: #E012AD;
+  color: #E012AD;
 }
 
 button.button:active {
@@ -38,7 +38,7 @@ button.button:active {
 }
 
 input, textarea {
-  border: 1px solid orange;
+  border: 1px solid #E012AD;
   border-radius: 4px;
   padding: 1em 1.5em;
 }
@@ -92,6 +92,12 @@ textarea {
   max-width: 800px;
 }
 
+.rating-form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, auto) 1fr;
+  align-items: center;
+}
+
 .pull-right {
   float: right;
   margin: 1em;
@@ -99,4 +105,10 @@ textarea {
 
 .control {
   text-align: right;
+}
+
+.delete-form {
+  max-width: 600px;
+  margin: auto;
+  text-align: center;
 }

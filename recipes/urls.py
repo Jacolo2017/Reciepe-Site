@@ -2,8 +2,8 @@ from django.urls import path
 
 from recipes.views import (
     RecipeCreateView,
-    RecipeUpdateView,
     RecipeDeleteView,
+    RecipeUpdateView,
     log_rating,
     RecipeDetailView,
     RecipeListView,

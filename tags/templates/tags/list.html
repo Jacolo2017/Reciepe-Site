@@ -8,6 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tags - Scrumptious</title>
+  <link rel="stylesheet" href="{% static 'css/app.css' %}">
 </head>
 
 <body>
@@ -18,44 +19,56 @@
           <a href="{% url 'home' %}">Scrumptious</a>
         </li>
         <li>
+          <a href="{% url 'tags_list' %}">Tags</a>
+        </li>
+        <li>
           <a href="{% url 'admin:index' %}">Admin</a>
         </li>
         <li>
-          <a href="{% url 'tag_new' %}">Write a recipe</a>
+          <a href="{% url 'recipe_new' %}">Write a recipe</a>
         </li>
       </ul>
     </nav>
+    <div class="pagination">
+      <span class="step-links">
+        {% if page_obj.has_previous %}
+          <a href="?page=1">&laquo; first</a>
+          <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+          Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}">next</a>
+          <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+      </span>
+    </div>
   </header>
-  <main class="tag-grid">
-    {% for recipe in recipe_list %}
-      <div class="tag-card">
-        <h2 class="tag-card-title">
-          <a href="{% url 'tag_detail' tag.pk %}">{{ recipe.name }}</a>
+  <main class="recipe-grid">
+    {% for tag in tag_list %}
+      <div class="recipe-card">
+        <h2 class="recipe-card-title">
+          <a href="{% url 'tag_detail' tag.id %}">{{ tag.name }}</a>
         </h2>
-        <p class="tag-card-date">{{ recipe.updated }}</p>
+        {% for recipe in tag.recipes.all %}
+          <p>
+            <a href="{% url 'recipe_detail' recipe.pk %}">{{ recipe.name }}</a>
+          </p>
+        {% endfor %}
+      </div>
+    {% empty %}
+      <div>
+        <h1>No tags, yet</h1>
+        <p>
+          Would you like to
+          <a href="{% url 'tag_new' %}">create</a>
+          one?
+        </p>
       </div>
     {% endfor %}
-    {% for contact in page_obj %}
-    {{ contact.full_name|upper }}<br>
-    ...
-{% endfor %}
-<div class="pagination">
-    <span class="step-links">
-        {% if page_obj.has_previous %}
-            <a href="?page=1">&laquo; first</a>
-            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-        {% endif %}
-  
-         <span class="current">
-            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-        </span>
-  
-        {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">next</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-        {% endif %}
-    </span>
-</div>
   </main>
 </body>
 
