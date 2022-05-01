@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load markdownify %}
 
+
 {% block content %}
   <main class="recipe-detail">
     <div>
@@ -16,7 +17,7 @@
       Created on {{ recipe.created }} |
       Updated on {{ recipe.updated }}
     </p>
-    <form method="post" action="{% url 'recipe_rating' recipe.id %}">
+    <form method="POST" action="{% url 'recipe_rating' recipe.id %}">
       {% csrf_token %}
       <div class="rating-form-grid">
         {{ rating_form.as_p }}
@@ -39,6 +40,11 @@
             <td>{{ ingredient.amount }}</td>
             <td>{{ ingredient.measure.name }}</td>
             <td>{{ ingredient.food.name }}</td>
+          <form method="POST" action="{% url 'create_shopping_item' ingredient.id %}">
+            {% csrf_token %}
+            <input type="hidden" name="ingredient_id" value="{{ ingredient.id}}">
+            <button>+ Shopping List</button>
+          </form>
           </tr>
         {% endfor %}
       </tbody>

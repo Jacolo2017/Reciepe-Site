@@ -15,5 +15,10 @@ class MealPlan(models.Model):
         null=True
     )
     recipes = models.ManyToManyField("recipes.Recipe",
-                                     related_name="recipes"
+                                     related_name="mealplan",
                                      )
+
+    def __str__(self):
+        return self.name
+
+

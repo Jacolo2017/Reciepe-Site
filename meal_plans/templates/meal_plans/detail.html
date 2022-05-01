@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load markdownify %}
+
+
+{% block content %}
+  <main class="recipe-detail">
+    <div>
+      <a href="{% url 'meal_plan_edit' mealplan.id %}">Edit</a>
+      <a href="{% url 'meal_plan_delete' mealplan.id %}">Delete</a>
+    </div>
+    <h1>{{ mealplan.name }}</h1>
+    <h3>{{ mealplan.date}}</h3>
+    <p>
+      {% for recipe in mealplan.recipes.all %}
+          <a href="{% url 'recipe_detail' recipe.pk %}">{{ recipe.name }}</a> 
+      {% endfor %}
+    </p>
+      {% comment %} {% csrf_token %}
+      </div>
+    </form>
+    <p>Tags: {% for tag in recipe.tags.all %}{{ tag.word }} {% endfor %}</p>
+    {{ mealplan.description | markdownify }}
+    <table>
+      <thead>
+        <tr>
+          <th colspan="2">Amount</th>
+          <th>Food item</th>
+        </tr>
+      </thead>
+      <tbody>
+          </form>
+          </tr>
+      </tbody>
+    </table> {% endcomment %}
+{% endblock content %}
